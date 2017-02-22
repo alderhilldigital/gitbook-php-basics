@@ -13,9 +13,9 @@
   * [Arrays](variables-and-constants/arrays.md)
   * [Constants](variables-and-constants/constants.md)
 * [Control Structures](chapter1.md)
-  * [IF](chapter1/if.md)
+  * [Conditional Statements](chapter1/if.md)
   * [Loops](chapter1/while.md)
-  * [SWITCH](chapter1/switch.md)
+  * [Case Switching](chapter1/switch.md)
 * Database
   * Connection
   * Prepared Statements
