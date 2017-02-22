@@ -10,6 +10,8 @@
   * [$\_SERVER](page-lifecycle/dollar_server.md)
 * [Variables and Constants](variables-and-constants.md)
   * [Basic Data Types](variables-and-constants/basic-data-types.md)
+  * [Strings](variables-and-constants/strings.md)
+  * [True or False](variables-and-constants/true-or-false.md)
   * [Arrays](variables-and-constants/arrays.md)
   * [Constants](variables-and-constants/constants.md)
 * [Control Structures](chapter1.md)
