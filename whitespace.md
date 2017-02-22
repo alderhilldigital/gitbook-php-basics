@@ -1,3 +1,5 @@
+# Whitespace
+
 Spaces, tabs, and blank lines in between statements have no effect on how the code is executed. To PHP, this next script is treated like any other, regardless of the fact that some statements are on the same line, and others are separated by several line breaks:
 
 ```
