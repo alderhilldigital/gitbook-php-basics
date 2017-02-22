@@ -7,7 +7,7 @@ PHP allows you to choose what action to take based on the result of a condition.
 
         $Age = 20;
 
-        if \($Age &lt; 18\) {
+        if ($Age &lt; 18) {
 
                 print "You're young - enjoy it!\n";
 
@@ -19,7 +19,7 @@ PHP allows you to choose what action to take based on the result of a condition.
 
 
 
-        if \($Age &gt;= 18 && $Age &lt; 50\) {
+        if ($Age &gt;= 18 && $Age &lt; 50) {
 
                 print "You're in the prime of your life\n";
 
@@ -31,7 +31,7 @@ PHP allows you to choose what action to take based on the result of a condition.
 
 
 
-        if \($Age &gt;= 50\) {
+        if ($Age &gt;= 50) {
 
                 print "You can retire soon - hurrah!\n";
 
@@ -55,7 +55,7 @@ The code to be executed if the statement is true is in its own block \(remember,
 One key thing to note is that PHP practices "if statement short-circuiting"this is where PHP will try to do as little conditional work as possible, so it basically stops checking conditional statements as long as it is sure it can stop. For example:
 
 ```
-if \($Age &gt; 10 && $Age &lt; 20\)
+if ($Age > 10 && $Age < 20)
 ```
 
 If $Age evaluates to 8, the first check \($Age &gt; 10\) will fail, so PHP will not bother checking it against 20. This means you can, for example, check whether a variable is set and whether it is set to a certain valueif the variable is not set, PHP will short-circuit the if statement and not check its value. This is good because if you check the value of an unset variable, PHP will flag an error.
@@ -65,19 +65,19 @@ A helpful addition to if statements is the elseif statement, which allows you to
 ```
 <?php
 
-        if \($Age &lt; 10\) {
+        if ($Age &lt; 10) {
 
                 print "You're under 10";
 
-        } elseif \($Age &lt; 20\) {
+        } elseif ($Age &lt; 20) {
 
                 print "You're under 20";
 
-        } elseif \($Age &lt; 30\) {
+        } elseif ($Age &lt; 30) {
 
                 print "You're under 30";
 
-        } elseif \($Age &lt; 40\) {
+        } elseif ($Age &lt; 40) {
 
                 print "You're under 40";
 
@@ -103,7 +103,7 @@ So, these two code chunks are the same:
 ```
 <?php
 
-if \($banned\) {
+if ($banned) {
 
         print "You are banned!";
 
@@ -111,7 +111,7 @@ if \($banned\) {
 
 
 
-if \($banned\) print "You are banned!";
+if ($banned) print "You are banned!";
 
 ?>
 ```
