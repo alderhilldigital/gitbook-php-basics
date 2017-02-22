@@ -13,7 +13,7 @@
   * [Arrays](variables-and-constants/arrays.md)
   * [Constants](variables-and-constants/constants.md)
 * [Control Structures](chapter1.md)
-  * IF
+  * [IF](chapter1/if.md)
   * WHILE
   * FOR
   * SWITCH
