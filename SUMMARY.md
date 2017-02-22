@@ -14,8 +14,7 @@
   * [Constants](variables-and-constants/constants.md)
 * [Control Structures](chapter1.md)
   * [IF](chapter1/if.md)
-  * WHILE
-  * FOR
+  * [Loops](chapter1/while.md)
   * [SWITCH](chapter1/switch.md)
 * Database
   * Connection
