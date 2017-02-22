@@ -2,6 +2,7 @@
 
 * [Introduction](README.md)
   * [Code Blocks](whitespace.md)
+  * [Comments](comments.md)
 * [Page Lifecycle](page-lifecycle.md)
   * [$\_POST](page-lifecycle/dollar_post.md)
   * [$\_GET](page-lifecycle/dollar_get.md)
