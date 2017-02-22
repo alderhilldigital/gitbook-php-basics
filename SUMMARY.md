@@ -1,5 +1,6 @@
 # Summary
 
+* [Pre-requisites](pre-requisites.md)
 * [Introduction](README.md)
   * [Code Blocks](whitespace.md)
   * [Comments](comments.md)
