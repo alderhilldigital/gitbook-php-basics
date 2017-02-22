@@ -16,7 +16,7 @@
   * [IF](chapter1/if.md)
   * WHILE
   * FOR
-  * SWITCH
+  * [SWITCH](chapter1/switch.md)
 * Database
   * Connection
   * Prepared Statements
