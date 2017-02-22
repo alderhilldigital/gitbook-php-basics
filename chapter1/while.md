@@ -182,3 +182,155 @@ Using that code, "Number 11" will be printed before $i is compared against 10. I
 
 The difference is that the while loop would output nothing, because it checks the value of $i before entering the loop. Therefore, do...while loops are always executed a minimum of once.
 
+Loops within loops
+
+You can nest loops as you see fit, like this:
+
+
+
+    for \($i = 1; $i &lt; 3; $i = $i + 1\) {
+
+            for \($j = 1; $j &lt; 3; $j = $j + 1\) {
+
+                    for \($k = 1; $k &lt; 3; $k = $k + 1\) {
+
+                            print "I: $i, J: $j, K: $k\n";
+
+                    }
+
+            }
+
+    }
+
+
+
+Here's the output:
+
+
+
+    I: 1, J: 1, K: 1
+
+    I: 1, J: 1, K: 2
+
+    I: 1, J: 2, K: 1
+
+    I: 1, J: 2, K: 2
+
+    I: 2, J: 1, K: 1
+
+    I: 2, J: 1, K: 2
+
+    I: 2, J: 2, K: 1
+
+    I: 2, J: 2, K: 2
+
+
+
+In this situation, using break is a little more complicated, as it only exits the containing loop. For example:
+
+
+
+    for \($i = 1; $i &lt; 3; $i = $i + 1\) {
+
+            for \($j = 1; $j &lt; 3; $j = $j + 1\) {
+
+                    for \($k = 1; $k &lt; 3; $k = $k + 1\) {
+
+                            print "I: $i, J: $j, K: $k\n";
+
+                            break;
+
+                    }
+
+            }
+
+    }
+
+
+
+This time the script will print out the following:
+
+
+
+    I: 1, J: 1, K: 1
+
+    I: 1, J: 2, K: 1
+
+    I: 2, J: 1, K: 1
+
+    I: 2, J: 2, K: 1
+
+
+
+As you can see, the $k loop only loops once because of the break call. However, the other loops execute several times. You can exercise even more control by specifying a number after break, such as break 2, to break out of two loops or switch/case statements. For example:
+
+
+
+    for \($i = 1; $i &lt; 3; $i = $i + 1\) {
+
+            for \($j = 1; $j &lt; 3; $j = $j + 1\) {
+
+                    for \($k = 1; $k &lt; 3; $k = $k + 1\) {
+
+                            print "I: $i, J: $j, K: $k\n";
+
+                            break 2;
+
+                    }
+
+            }
+
+    }
+
+
+
+That outputs the following:
+
+
+
+    I: 1, J: 1, K: 1
+
+    I: 2, J: 1, K: 1
+
+
+
+This time the loop only executes twice, because the $k loop calls break 2, which breaks out of the $k loop and out of the $j loop, so only the $i loop will go around again. This could even be break 3, meaning break out of all three loops and continue normally.
+
+
+
+The break command applies to both loops and switch/case statements. For example:
+
+
+
+    for \($i = 1; $i &lt; 3; $i = $i + 1\) {
+
+            for \($j = 1; $j &lt; 3; $j = $j + 1\) {
+
+                    for \($k = 1; $k &lt; 3; $k = $k + 1\) {
+
+                            switch\($k\) {
+
+                                    case 1:
+
+                                            print "I: $i, J: $j, K: $k\n";
+
+                                            break 2;
+
+                                    case 2:
+
+                                            print "I: $i, J: $j, K: $k\n";
+
+                                            break 3;
+
+                            }
+
+                    }
+
+            }
+
+    }
+
+
+
+The break 2 line will break out of the switch/case block and also out of the $k loop, whereas the break 3 line will break out of those two and also the $j loop. To break out of the loops entirely from within the switch/case statement, break 4 is required.
+
