@@ -7,7 +7,7 @@ The foreach loop is designed to work with arrays, and works by iterating through
 The most basic use of foreach extracts only the values from each array element, like this:
 
 ```
-foreach\($array as $val\) {
+foreach($array as $val) {
 
         print $val;
 
@@ -19,59 +19,11 @@ Here the array $array is looped through, and its values are extracted into $val.
 You can also use foreach to extract keys, like this:
 
 ```
-foreach \($array as $key =&gt; $val\) {
+foreach ($array as $key =&gt; $val) {
 
         print "$key = $val\n";
 
 }
-```
-
-When working with objects, the syntax is identical:
-
-```
-<?php
-
-        class monitor {
-
-                private $Brand;
-
-                public $Size;
-
-                public $Resolution;
-
-                public $IsFlat;
-
-
-
-                public function \_ \_construct\($Brand, $Size, $Resolution,
-
- $IsFlat\) {
-
-                        $this-&gt;Brand = $Brand;
-
-                        $this-&gt;Size = $Size;
-
-                        $this-&gt;Resolution = $Resolution;
-
-                        $this-&gt;IsFlat = $IsFlat;
-
-                }
-
-        }
-
-
-
-        $AppleCinema = new monitor\("Apple", "30", "2560x1600", true\);
-
-
-
-        foreach\($AppleCinema as $var =&gt; $val\) {
-
-                print "$var = $val\n";
-
-        }
-
-?>
 ```
 
 PHP while loops are used for executing a block of code only so long as a given condition is true. For example, this code will loop from 1 to 10, printing out values as it goes:
@@ -81,7 +33,7 @@ PHP while loops are used for executing a block of code only so long as a given c
 
         $i = 1;
 
-        while\($i &lt;= 10\) {
+        while($i &lt;= 10) {
 
                 print "Number $i\n";
 
@@ -99,7 +51,7 @@ Like if statements, you can put whatever conditions you choose into while loops,
 While loops are most often used to increment a list where there is no known limit to the number of iterations of the loop. For example:
 
 ```
-while\(there are still rows to read from a database\) {
+while(there are still rows to read from a database) {
 
         read in a row;
 
@@ -115,7 +67,7 @@ Here is how a for loop looks in PHP:
 ```
 <?php
 
-        for \($i = 1; $i &lt; 10; $i++\) {
+        for ($i = 1; $i &lt; 10; $i++) {
 
                 print "Number $i\n";
 
@@ -159,7 +111,7 @@ The PHP do...while construct is similar to a while loop. The difference is that 
 
                 print "Number $i\n";
 
-        } while \($i &lt; 10\);
+        } while ($i &lt; 10);
 
 ?>
 ```
@@ -171,7 +123,7 @@ Using that code, "Number 11" will be printed before $i is compared against 10. I
 
         $i = 11;
 
-        while \($i &lt; 10\) {
+        while ($i &lt; 10) {
 
                 print "Number $i\n";
 
@@ -182,155 +134,139 @@ Using that code, "Number 11" will be printed before $i is compared against 10. I
 
 The difference is that the while loop would output nothing, because it checks the value of $i before entering the loop. Therefore, do...while loops are always executed a minimum of once.
 
-Loops within loops
+# Loops within loops
 
 You can nest loops as you see fit, like this:
 
+```
+for ($i = 1; $i &lt; 3; $i = $i + 1) {
 
+        for ($j = 1; $j &lt; 3; $j = $j + 1) {
 
-    for \($i = 1; $i &lt; 3; $i = $i + 1\) {
+                for ($k = 1; $k &lt; 3; $k = $k + 1) {
 
-            for \($j = 1; $j &lt; 3; $j = $j + 1\) {
+                        print "I: $i, J: $j, K: $k\n";
 
-                    for \($k = 1; $k &lt; 3; $k = $k + 1\) {
+                }
 
-                            print "I: $i, J: $j, K: $k\n";
+        }
 
-                    }
-
-            }
-
-    }
-
-
+}
+```
 
 Here's the output:
 
+```
+I: 1, J: 1, K: 1
 
+I: 1, J: 1, K: 2
 
-    I: 1, J: 1, K: 1
+I: 1, J: 2, K: 1
 
-    I: 1, J: 1, K: 2
+I: 1, J: 2, K: 2
 
-    I: 1, J: 2, K: 1
+I: 2, J: 1, K: 1
 
-    I: 1, J: 2, K: 2
+I: 2, J: 1, K: 2
 
-    I: 2, J: 1, K: 1
+I: 2, J: 2, K: 1
 
-    I: 2, J: 1, K: 2
-
-    I: 2, J: 2, K: 1
-
-    I: 2, J: 2, K: 2
-
-
+I: 2, J: 2, K: 2
+```
 
 In this situation, using break is a little more complicated, as it only exits the containing loop. For example:
 
+```
+for ($i = 1; $i &lt; 3; $i = $i + 1) {
 
+        for ($j = 1; $j &lt; 3; $j = $j + 1) {
 
-    for \($i = 1; $i &lt; 3; $i = $i + 1\) {
+                for ($k = 1; $k &lt; 3; $k = $k + 1) {
 
-            for \($j = 1; $j &lt; 3; $j = $j + 1\) {
+                        print "I: $i, J: $j, K: $k\n";
 
-                    for \($k = 1; $k &lt; 3; $k = $k + 1\) {
+                        break;
 
-                            print "I: $i, J: $j, K: $k\n";
+                }
 
-                            break;
+        }
 
-                    }
-
-            }
-
-    }
-
-
+}
+```
 
 This time the script will print out the following:
 
+```
+I: 1, J: 1, K: 1
 
+I: 1, J: 2, K: 1
 
-    I: 1, J: 1, K: 1
+I: 2, J: 1, K: 1
 
-    I: 1, J: 2, K: 1
-
-    I: 2, J: 1, K: 1
-
-    I: 2, J: 2, K: 1
-
-
+I: 2, J: 2, K: 1
+```
 
 As you can see, the $k loop only loops once because of the break call. However, the other loops execute several times. You can exercise even more control by specifying a number after break, such as break 2, to break out of two loops or switch/case statements. For example:
 
+```
+for ($i = 1; $i &lt; 3; $i = $i + 1) {
 
+        for ($j = 1; $j &lt; 3; $j = $j + 1) {
 
-    for \($i = 1; $i &lt; 3; $i = $i + 1\) {
+                for ($k = 1; $k &lt; 3; $k = $k + 1) {
 
-            for \($j = 1; $j &lt; 3; $j = $j + 1\) {
+                        print "I: $i, J: $j, K: $k\n";
 
-                    for \($k = 1; $k &lt; 3; $k = $k + 1\) {
+                        break 2;
 
-                            print "I: $i, J: $j, K: $k\n";
+                }
 
-                            break 2;
+        }
 
-                    }
-
-            }
-
-    }
-
-
+}
+```
 
 That outputs the following:
 
+```
+I: 1, J: 1, K: 1
 
-
-    I: 1, J: 1, K: 1
-
-    I: 2, J: 1, K: 1
-
-
+I: 2, J: 1, K: 1
+```
 
 This time the loop only executes twice, because the $k loop calls break 2, which breaks out of the $k loop and out of the $j loop, so only the $i loop will go around again. This could even be break 3, meaning break out of all three loops and continue normally.
 
-
-
 The break command applies to both loops and switch/case statements. For example:
 
+```
+for ($i = 1; $i &lt; 3; $i = $i + 1) {
 
+        for ($j = 1; $j &lt; 3; $j = $j + 1) {
 
-    for \($i = 1; $i &lt; 3; $i = $i + 1\) {
+                for ($k = 1; $k &lt; 3; $k = $k + 1) {
 
-            for \($j = 1; $j &lt; 3; $j = $j + 1\) {
+                        switch($k) {
 
-                    for \($k = 1; $k &lt; 3; $k = $k + 1\) {
+                                case 1:
 
-                            switch\($k\) {
+                                        print "I: $i, J: $j, K: $k\n";
 
-                                    case 1:
+                                        break 2;
 
-                                            print "I: $i, J: $j, K: $k\n";
+                                case 2:
 
-                                            break 2;
+                                        print "I: $i, J: $j, K: $k\n";
 
-                                    case 2:
+                                        break 3;
 
-                                            print "I: $i, J: $j, K: $k\n";
+                        }
 
-                                            break 3;
+                }
 
-                            }
+        }
 
-                    }
-
-            }
-
-    }
-
-
+}
+```
 
 The break 2 line will break out of the switch/case block and also out of the $k loop, whereas the break 3 line will break out of those two and also the $j loop. To break out of the loops entirely from within the switch/case statement, break 4 is required.
 
