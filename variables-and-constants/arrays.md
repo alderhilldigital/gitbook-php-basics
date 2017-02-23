@@ -445,61 +445,61 @@ var_dump($both_toppings);
 
 // prints: array(7) { [0]=> string(9) "Pepperoni" [1]=>
 
-// string(6) "Cheese" \[2\]=&gt; string\(9\) "Anchovies" \[3\]=&gt;
+// string(6) "Cheese" [2]=> string(9) "Anchovies" [3]=>
 
-// string\(8\) "Tomatoes" \[4\]=&gt; string\(3\) "Ham" \[5\]=&gt;
+// string(8) "Tomatoes" [4]=> string(3) "Ham" [5]=>
 
-// string\(6\) "Cheese" \[6\]=&gt; string\(7\) "Peppers" }
+// string(6) "Cheese" [6]=> string(7) "Peppers" }
 ```
 
-Section 5.14.  Arrays
+
 
 The + operator in PHP is overloaded so that you can use it to merge arrays, e.g., $array3 = $array1 + $array2. But if it finds any keys in the second array that clash with the keys in the first array, they will be skipped.
 
 The array\_merge\( \) will try to retain array keys when possible. For example, if you are merging two arrays that have no duplicate keys, all the keys will be retained. However, if there are key clashes, array\_merge\( \) will use the clashing key from the last array that contains it. For example:
 
 ```
-$arr1 = array\("Paul"=&gt;25, "Ildiko"=&gt;38, "Nick"=&gt;27\);
+$arr1 = array("Paul"=>25, "Ildiko"=>38, "Nick"=>27);
 
-$arr2 = array\("Ildiko"=&gt;27, "Paul"=&gt;38\);
+$arr2 = array("Ildiko"=>27, "Paul"=>38);
 
 
 
 print "Merge:\n";
 
-var\_dump\(array\_merge\($arr1, $arr2\)\);
+var_dump(array_merge($arr1, $arr2));
 
 // Values 27 and 38 clash, so their keys from $arr2 are used.
 
-// So, output is Paul \(38\), Ildiko \(27\), and Nick \(27\).
+// So, output is Paul (38), Ildiko (27), and Nick (27).
 ```
 
 You can merge several arrays simultaneously by providing more parameters to the function. For example:
 
 ```
-$sports\_teams = array\_merge\($soccer, $baseball, $basketball, $hockey\);
+$sports_teams = array_merge($soccer, $baseball, $basketball, $hockey);
 ```
 
-array\_pop\( \)
+**array\_pop\( \)**
 
 ```
-mixed array\_pop \( array &arr \)
+mixed array_pop ( array &arr )
 ```
 
 The array\_pop\( \) function takes an array as its only parameter, and returns the value from the end of the array while also removing it from the array. For example:
 
 ```
-$names = array\("Timmy", "Bobby", "Sam", "Tammy", "Joe"\);
+$names = array("Timmy", "Bobby", "Sam", "Tammy", "Joe");
 
-$firstname = array\_pop\($names\);
+$firstname = array_pop($names);
 
 // first is Timmy; last is Joe again
 ```
 
-array\_push\( \)
+**array\_push\( \)**
 
 ```
-int array\_push \( array &arr, mixed var \[, mixed ...\] \)
+int array_push \( array &arr, mixed var [, mixed ...] )
 ```
 
 The array\_push\( \) function takes an array and a new value as its only parameter, and pushes that value onto the end of the array, after all the other elements. This is the opposite of the array\_pop\( \) function:
@@ -507,17 +507,17 @@ The array\_push\( \) function takes an array and a new value as its only paramet
 ```
 $firstname = "Johnny";
 
-$names = array\("Timmy", "Bobby", "Sam", "Tammy", "Joe"\);
+$names = array("Timmy", "Bobby", "Sam", "Tammy", "Joe");
 
-array\_push\($names, $firstname\);
+array_push($names, $firstname);
 
 // first is Timmy; last is now Johnny
 ```
 
-array\_rand\( \)
+**array\_rand\( \)**
 
 ```
-mixed array\_rand \( array arr \[, int amount\] \)
+mixed array_rand ( array arr [, int amount] )
 ```
 
 The array\_rand\( \) function picks out one or more random values from an array. It takes an array to read from, then returns either one random key or an array of random keys from inside there. The advantage to array\_rand\( \) is that it leaves the original array intact, so you can just use that randomly chosen key to grab the related value from the array.
@@ -539,9 +539,9 @@ If you want to read most or all of the elements from your array in a random orde
 With that in mind, here's an example of array\_rand\( \) in action:
 
 ```
-$natural\_born\_killers = array\("lions", "tigers", "bears", "kittens"\);
+$natural_born_killers = array("lions", "tigers", "bears", "kittens");
 
-$two\_killers = array\_rand\($natural\_born\_killers, 2\);
+$two_killers = array_rand($natural_born_killers, 2);
 ```
 
 array\_shift\( \)
