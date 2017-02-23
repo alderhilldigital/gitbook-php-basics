@@ -18,6 +18,7 @@
   * [True or False](variables-and-constants/true-or-false.md)
   * [Arrays](variables-and-constants/arrays.md)
   * [Constants](variables-and-constants/constants.md)
+  * [Superglobals](variables-and-constants/superglobals.md)
 * [Control Structures](chapter1.md)
   * [Conditional Statements](chapter1/if.md)
   * [Loops](chapter1/while.md)
