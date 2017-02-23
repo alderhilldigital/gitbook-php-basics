@@ -452,8 +452,6 @@ var_dump($both_toppings);
 // string(6) "Cheese" [6]=> string(7) "Peppers" }
 ```
 
-
-
 The + operator in PHP is overloaded so that you can use it to merge arrays, e.g., $array3 = $array1 + $array2. But if it finds any keys in the second array that clash with the keys in the first array, they will be skipped.
 
 The array\_merge\( \) will try to retain array keys when possible. For example, if you are merging two arrays that have no duplicate keys, all the keys will be retained. However, if there are key clashes, array\_merge\( \) will use the clashing key from the last array that contains it. For example:
@@ -483,7 +481,7 @@ $sports_teams = array_merge($soccer, $baseball, $basketball, $hockey);
 **array\_pop\( \)**
 
 ```
-mixed array_pop ( array &arr )
+array_pop ( array &arr )
 ```
 
 The array\_pop\( \) function takes an array as its only parameter, and returns the value from the end of the array while also removing it from the array. For example:
@@ -499,7 +497,7 @@ $firstname = array_pop($names);
 **array\_push\( \)**
 
 ```
-int array_push \( array &arr, mixed var [, mixed ...] )
+array_push \( array &arr, mixed var [, mixed ...] )
 ```
 
 The array\_push\( \) function takes an array and a new value as its only parameter, and pushes that value onto the end of the array, after all the other elements. This is the opposite of the array\_pop\( \) function:
@@ -517,7 +515,7 @@ array_push($names, $firstname);
 **array\_rand\( \)**
 
 ```
-mixed array_rand ( array arr [, int amount] )
+array_rand ( array arr [, int amount] )
 ```
 
 The array\_rand\( \) function picks out one or more random values from an array. It takes an array to read from, then returns either one random key or an array of random keys from inside there. The advantage to array\_rand\( \) is that it leaves the original array intact, so you can just use that randomly chosen key to grab the related value from the array.
@@ -544,44 +542,44 @@ $natural_born_killers = array("lions", "tigers", "bears", "kittens");
 $two_killers = array_rand($natural_born_killers, 2);
 ```
 
-array\_shift\( \)
+**array\_shift\( \)**
 
 ```
-mixed array\_shift \( array &arr \)
+array_shift ( array &arr )
 ```
 
 The array\_shift\( \) function takes an array as its only parameter, and returns the value from the front of the array while also removing it from the array. For example:
 
 ```
-$names = array\("Johnny", "Timmy", "Bobby", "Sam", "Tammy", "Joe"\);
+$names = array("Johnny", "Timmy", "Bobby", "Sam", "Tammy", "Joe");
 
-$firstname = array\_shift\($names\); // "Johnny"
+$firstname = array_shift($names); // "Johnny"
 
-var\_dump\($names\);
+var_dump($names);
 
 // Timmy, Bobby, Sam, Tammy, Danny, and Joe
 ```
 
-array\_unique\( \)
+**array\_unique\( \)**
 
 ```
-array array\_unique \( array arr \)
+array_unique ( array arr )
 ```
 
 The array\_unique\( \) filters an array so that a value can only appear once. It takes an array as its only parameter, and returns the same array with duplicate values removed. For example:
 
 ```
-$toppings2 = array\("Peppers", "Ham", "Cheese", "Peppers"\);
+$toppings2 = array("Peppers", "Ham", "Cheese", "Peppers");
 
-$toppings2 = array\_unique\($toppings2\);
+$toppings2 = array_unique($toppings2);
 
 // now contains "Peppers", "Ham", and "Cheese"
 ```
 
-array\_unshift\( \)
+**array\_unshift\( \)**
 
 ```
-int array\_unshift \( array &arr, mixed var \[, mixed ...\] \)
+array_unshift ( array &arr, mixed var [, mixed ...] )
 ```
 
 The array\_unshift\( \) function takes an array and a new value as its only parameter, and pushes that value onto the start of the array, before all the other elements. This is the opposite of the array\_shift\( \) function.
@@ -589,17 +587,17 @@ The array\_unshift\( \) function takes an array and a new value as its only para
 ```
 $firstname = "Johnny";
 
-$names = array\("Timmy", "Bobby", "Sam", "Tammy", "Joe"\);
+$names = array("Timmy", "Bobby", "Sam", "Tammy", "Joe");
 
-array\_unshift\($names, $firstname\);
+array_unshift($names, $firstname);
 
 // first is Johnny, last is Joe
 ```
 
-array\_values\( \)
+**array\_values\( \)**
 
 ```
-array array\_values \( array arr \)
+array_values ( array arr )
 ```
 
 The array\_values\( \) takes an array as its only parameter, and returns an array of all the values in that array. This might seem pointless, but its usefulness lies in how numerical arrays are indexed. If you use the array operator \[ \] to assign variables to an array, PHP will use 0, 1, 2, etc. as the keys. If you then sort the array using a function such as asort\( \), which keeps the keys intact, the array's keys will be out of order because asort\( \) sorts by value, not by key.
@@ -607,67 +605,67 @@ The array\_values\( \) takes an array as its only parameter, and returns an arra
 Using the array\_values\( \) function makes PHP create a new array where the indexes are recreated and the values are copied from the old array, essentially making it renumber the array elements. For example:
 
 ```
-$words = array\("Hello", "World", "Foo", "Bar", "Baz"\);
+$words = array("Hello", "World", "Foo", "Bar", "Baz");
 
 
 
-var\_dump\($words\);
+var_dump($words);
 
 // prints the array out in its original ordering, so
 
-// array\(5\) { \[0\]=&gt; string\(5\) "Hello" \[1\]=&gt; string\(5\)
+// array(5) { [0]=> string(5) "Hello" [1]=> string(5)
 
-// "World" \[2\]=&gt; string\(3\) "Foo" \[3\]=&gt; string\(3\) "Bar"
+// "World" [2]=> string(3) "Foo" [3]=> string(3) "Bar"
 
-// \[4\]=&gt; string\(3\) "Baz" }
-
-
-
-asort\($words\);
+// [4]=> string(3) "Baz" }
 
 
 
-var\_dump\($words\);
+asort($words);
+
+
+
+var_dump($words);
 
 // ordered by the values, but the keys will be jumbled up, so
 
-// array\(5\) { \[3\]=&gt; string\(3\) "Bar" \[4\]=&gt; string\(3\) "Baz"
+// array(5) { [3]=> string(3) "Bar" [4]=> string(3) "Baz"
 
-// \[2\]=&gt; string\(3\) "Foo" \[0\]=&gt; string\(5\) "Hello"
+// [2]=> string(3) "Foo" [0]=> string(5) "Hello"
 
-// \[1\]=&gt; string\(5\) "World" }
+// [1]=> string(5) "World" }
 
 
 
-var\_dump\(array\_values\($words\)\);
+var_dump(array_values($words));
 
-// array\_values\( \) creates a new array, re-ordering the keys. So:
+// array_values() creates a new array, re-ordering the keys. So:
 
-// array\(5\) { \[0\]=&gt; string\(3\) "Bar" \[1\]=&gt; string\(3\) "Baz"
+// array(5) { [0]=> string(3) "Bar" [1]=> string(3) "Baz"
 
-// \[2\]=&gt; string\(3\) "Foo" \[3\]=&gt; string\(5\) "Hello"
+// [2]=> string(3) "Foo" [3]=> string(5) "Hello"
 
-// \[4\]=&gt; string\(5\) "World" }
+// [4]=> string(5) "World" }
 ```
 
 You will find array\_values\( \) useful to reorder an array's indexes either because they are jumbled up or because they have holes in them, but you can also use it to convert an associative array with strings as the indexes to a plain numerical array.
 
-arsort\( \)
+**arsort\( \)**
 
 ```
-bool arsort \( array &arr \[, int options\] \)
+arsort ( array &arr [, int options] )
 ```
 
 The arsort\( \) function takes an array as its only parameter, and reverse sorts it by its values while preserving the keys. This is the opposite of the asort\( \) . For example:
 
 ```
-$capitalcities\['England'\] = 'London';
+$capitalcities['England'] = 'London';
 
-$capitalcities\['Wales'\] = 'Cardiff';
+$capitalcities['Wales'] = 'Cardiff';
 
-$capitalcities\['Scotland'\] = 'Edinburgh';
+$capitalcities['Scotland'] = 'Edinburgh';
 
-arsort\($capitalcities\);
+arsort($capitalcities);
 
 // reverse-sorted by value, so London, Edinburgh, Cardiff
 ```
@@ -676,22 +674,22 @@ Note that arsort\( \) works by reference, directly changing the value you pass i
 
 By default, the sort functions sort so that 2 comes before 10. You can change this using the second parametersee the ksort\( \) reference for how to do this.
 
-asort\( \)
+**asort\( \)**
 
 ```
-bool arsort \( array &arr \[, int options\] \)
+arsort ( array &arr [, int options] )
 ```
 
 The asort\( \) function takes an array as its only parameter, and sorts it by its values while preserving the keys. For example:
 
 ```
-$capitalcities\['England'\] = 'London';
+$capitalcities['England'] = 'London';
 
-$capitalcities\['Wales'\] = 'Cardiff';
+$capitalcities['Wales'] = 'Cardiff';
 
-$capitalcities\['Scotland'\] = 'Edinburgh';
+$capitalcities['Scotland'] = 'Edinburgh';
 
-asort\($capitalcities\);
+asort($capitalcities);
 
 // sorted by value, so Cardiff, Edinburgh, London
 ```
@@ -700,10 +698,10 @@ Note that asort\( \) works by reference, directly changing the value you pass in
 
 By default, the sort functions sort so that 2 comes before 10. You can change this using the second parametersee the ksort\( \) reference for how to do this.
 
-explode\( \)
+**explode\( \)**
 
 ```
-array explode \( string separator, string input \[, int limit\] \)
+explode ( string separator, string input [, int limit] )
 ```
 
 The explode\( \) function converts a string into an array using a separator value. For example, the string "head, shoulders, knees, toes" could be converted to an array with the values heads, shoulders, knees, toes by using the separator ",". Note that the separator is a comma followed by a space, otherwise the array values would be heads, shoulders, knees, and toes. For example:
@@ -711,17 +709,17 @@ The explode\( \) function converts a string into an array using a separator valu
 ```
 $oz = "Lions and Tigers and Bears";
 
-$oz\_array = explode\(" and ", $oz\);
+$oz_array = explode(" and ", $oz);
 
 // array contains "Lions", "Tigers", "Bears"
 ```
 
 To reverse this function, converting an array into a string by inserting a separator between elements, use the implode\( \) function.
 
-extract\( \)
+**extract\( \)**
 
 ```
-int extract \( array arr \[, int options \[, string prefix\]\] \)
+extract ( array arr [, int options [, string prefix]] )
 ```
 
 The extract\( \) function converts elements in an array into variables in their own right, an act commonly called "exporting" in other languages. Extract takes a minimum of one parameter, an array, and returns the number of elements extracted. This is best explained using code:
@@ -729,109 +727,21 @@ The extract\( \) function converts elements in an array into variables in their 
 ```
 $Wales = "Swansea";
 
-$capitalcities = array\("England"=&gt;"London",
+$capitalcities = array("England"=>"London",
 
-  "Scotland"=&gt;"Edinburgh", "Wales"=&gt;"Cardiff"\);
+  "Scotland"=>"Edinburgh", "Wales"=>"Cardiff");
 
-extract\($capitalcities\);
+extract($capitalcities);
 
 print $Wales;
 ```
 
 After calling extract, the England, Scotland, and Wales keys become variables in their own right \($England, $Scotland, and $Wales\), with their values set to London, Edinburgh, and Cardiff, respectively. By default, extract\( \) will overwrite any existing variables, meaning that $Wales's original value of Swansea will be overwritten with Cardiff. The new variables are copies of those in the array, and not references.
 
-This behavior can be altered using the second parameter, and averted using the third parameter. Parameter two takes a special constant value that allows you to decide how values will be treated if there is an existing variable, and parameter three allows you to prefix each extract variable with a special string. The possible values of the second parameter are shown in Table 5-6.
-
-Table 5-6. Possible values for the second parameter to extract\( \)
-
-EXTR\_OVERWRITE
-
-On collision, overwrite the existing variable
-
-EXTR\_SKIP
-
-On collision, do not overwrite the existing variable
-
-EXTR\_PREFIX\_SAME
-
-On collision, prefix the variable name with the prefix specified by parameter three
-
-EXTR\_PREFIX\_ALL
-
-Prefix all variables with the prefix specified by parameter three, whether or not there is a collision
-
-EXTR\_PREFIX\_INVALID
-
-Use the prefix specified by parameter three only when variable names would otherwise be illegal \(e.g. ,"$9"\)
-
-EXTR\_IF\_EXISTS
-
-Set variables only if they already exist
-
-EXTR\_PREFIX\_IF\_EXISTS
-
-Create prefixed variables only if non-prefixed version already exists
-
-EXTR\_REFS
-
-Extract variables as references rather than copies
-
-The last option, EXtr\_REFS, can be used on its own or in combination with others using the bitwise OR operator, \|.
-
-Here are some examples based upon the $capitalcities array from the previous example:
+**implode\( \)**
 
 ```
-$Wales = 'Swansea';
-
-extract\($capitalcities, EXTR\_SKIP\);
-
-// leaves $Wales intact, as it exists already
-
-
-
-print $Wales; // "Swansea"
-
-print $Scotland; // "Edinburgh"
-
-
-
-extract\($capitalcities, EXTR\_PREFIX\_SAME, "country"\);
-
-// creates variables $country\_Wales, $country\_Scotland, etc
-
-
-
-print $Wales; // "Swansea"
-
-print $country\_England; // "London"
-
-// Note that PHP places an underscore
-
-// after the prefix for easier reading
-
-extract\($capitalcities, EXTR\_PREFIX\_ALL, "country"\);
-
-// creates variables with prefixes, overwriting $country\_England, etc
-
-
-
-extract\($capitalcities, EXTR\_PREFIX\_ALL \| EXTR\_REFS, "country"\);
-
-// sets $country\_ variables to be references to the array elements
-
-
-
-$country\_Scotland = "Stirling";
-
-print\($capitalcities\["Scotland"\]\);
-
-// prints "Stirling", because we changed it by reference
-```
-
-implode\( \)
-
-```
-string implode \( string separator, array pieces \)
+ implode ( string separator, array pieces )
 ```
 
 The implode\( \) function converts an array into a string by inserting a separator between each element. This is the reverse of the explode\( \) function. For example:
@@ -839,33 +749,33 @@ The implode\( \) function converts an array into a string by inserting a separat
 ```
 $oz = "Lions and Tigers and Bears";
 
-$oz\_array = explode\(" and ", $oz\);
+$oz_array = explode(" and ", $oz);
 
 // array contains "Lions", "Tigers", "Bears"
 
 
 
-$exclams = implode\("! ", $oz\_array\);
+$exclams = implode("! ", $oz_array\);
 
 // string contains "Lions! Tigers! Bears!"
 ```
 
-in\_array\( \)
+**in\_array\( \)**
 
 ```
-bool in\_array \( mixed needle, array haystack \[, bool strict\] \)
+in_array ( needle, haystack [, bool strict] )
 ```
 
-The in\_array\( \) function will return TRue if an array contains a specific value; otherwise, it will return false:
+The in\_array\( \) function will return true if an array contains a specific value; otherwise, it will return false:
 
 ```
 $needle = "Sam";
 
-$haystack = array\("Johnny", "Timmy", "Bobby", "Sam", "Tammy", "Joe"\);
+$haystack = array("Johnny", "Timmy", "Bobby", "Sam", "Tammy", "Joe");
 
 
 
-if \(in\_array\($needle, $haystack\)\) {
+if (in_array($needle, $haystack)) {
 
         print "$needle is in the array!\n";
 
@@ -878,116 +788,68 @@ if \(in\_array\($needle, $haystack\)\) {
 
 There is an optional boolean third parameter for in\_array\( \) \(set to false by default\) that defines whether you want to use strict checking or not. If parameter three is set to true, PHP will return true only if the value is in the array and of the same typethat is, if they are identical in the same way as the = = = operator \(three equals signs\).
 
-krsort\( \)
+**krsort\( \)**
 
-```
-bool krsort \( array &arr \[, int options\] \)
-```
+krsort \\( array &arr \\[, int options\\] \\)
 
 The krsort\( \) function takes an array as its only parameter, and reverse sorts it by its keys while preserving the values. This is the opposite of the ksort\( \) . For example:
 
-```
-$capitalcities\['England'\] = 'London';
+$capitalcities\\['England'\\] = 'London';
 
-$capitalcities\['Wales'\] = 'Cardiff';
 
-$capitalcities\['Scotland'\] = 'Edinburgh';
 
-krsort\($capitalcities\);
+$capitalcities\\['Wales'\\] = 'Cardiff';
+
+
+
+$capitalcities\\['Scotland'\\] = 'Edinburgh';
+
+
+
+krsort\\($capitalcities\\);
+
+
 
 // reverse-sorted by key, so Wales, Scotland, then England
-```
 
 Note that krsort\( \) works by reference, directly changing the value you pass in. The return value is either TRue or false, depending on whether the sorting was successful.
 
 By default, the sort functions sort so that 2 comes before 10. You can change this using the second parametersee the ksort\( \) reference for how to do this.
 
-ksort\( \)
+**range\( \)**
 
 ```
-bool ksort \( array &arr \[, int options\] \)
-```
-
-The ksort\( \) function takes an array as its only parameter, and sorts it by its keys while preserving the values. For example:
-
-```
-$capitalcities\['England'\] = 'London';
-
-$capitalcities\['Wales'\] = 'Cardiff';
-
-$capitalcities\['Scotland'\] = 'Edinburgh';
-
-ksort\($capitalcities\);
-
-// sorted by key, so England, Scotland, then Wales
-```
-
-Note that ksort\( \) works by reference, directly changing the value you pass in. The return value is either TRue or false, depending on whether the sorting was successful.
-
-By default, the sort functions sort so that 2 comes before 10. While this might be obvious, consider how a string sort would compare 2 and 10it would work character by character, which means it would compare 2 against 1 and, therefore, put 10 before 2. Sometimes this is the desired behavior, so you can pass a second parameter to the sort functions to specify how you want the values sorted, like this:
-
-```
-$array\["1"\] = "someval1";
-
-$array\["2"\] = "someval2";
-
-$array\["3"\] = "someval3";
-
-$array\["10"\] = "someval4";
-
-$array\["100"\] = "someval5";
-
-$array\["20"\] = "someval6";
-
-$array\["200"\] = "someval7";
-
-$array\["30"\] = "someval8";
-
-$array\["300"\] = "someval9";
-
-var\_dump\($array\);
-
-ksort\($array, SORT\_STRING\);
-
-var\_dump\($array\);
-```
-
-If you want to force a strictly numeric sort, you can pass SORT\_NUMERIC as the second parameter.
-
-range\( \)
-
-```
-array range \( mixed low, mixed high \[, number step\] \)
+range ( mixed low, mixed high [, number step] )
 ```
 
 The range\( \) function creates an array of numbers between a low value \(parameter one\) and a high value \(parameter two\). So, to get an array of the sequential numbers between 1 and 40 \(inclusive\), you could use this:
 
 ```
-$numbers = range\(1,40\);
+$numbers = range(1,40);
 ```
 
 The range\( \) function has a third parameter that allows you specify a step amount in the range. This can either be an integer or a floating-point number. For example:
 
 ```
-$questions = range\(1, 10, 2\);
+$questions = range(1, 10, 2);
 
 // gives 1, 3, 5, 7, 9
 
 
 
-$questions = range\(1, 10, 3\)
+$questions = range(1, 10, 3)
 
 // gives 1, 4, 7, 10
 
 
 
-$questions = range\(10, 100, 10\);
+$questions = range(10, 100, 10);
 
 // gives 10, 20, 30, 40, 50, 60, 70, 80, 90, 100
 
 
 
-$float = range\(1, 10, 1.2\);
+$float = range(1, 10, 1.2);
 
 // gives 1, 2.2, 3.4, 4.6, 5.8, 7, 8.2, 9.4
 ```
@@ -995,7 +857,7 @@ $float = range\(1, 10, 1.2\);
 Although the step parameter should always be positive, if your low parameter \(parameter one\) is higher than your high parameter \(parameter two\), you get an array counting down, like this:
 
 ```
-$questions = range\(100, 0, 10\);
+$questions = range(100, 0, 10);
 
 // gives 100, 90, 80, 70, 60, 50, 40, 30, 20, 10, 0
 ```
@@ -1003,83 +865,61 @@ $questions = range\(100, 0, 10\);
 Finally, you can also use range\( \) to create arrays of characters, like this:
 
 ```
-$questions = range\("a", "z", 1\);
+$questions = range("a", "z", 1);
 
 // gives a, b, c, d, ..., x, y, z
 
 
 
-$questions = range\("z", "a", 2\);
+$questions = range("z", "a", 2);
 
 // gives z, x, v, t, ..., f, d, b
 ```
 
-shuffle\( \)
-
-```
-bool shuffle \( array &arr \)
-```
-
-The shuffle\( \) function takes an array as its parameter, and randomizes the position of the elements in there. It takes its parameter by referencethe return value is either true or false, depending on whether it successfully randomized the array. For example:
-
-```
-$natural\_born\_killers = array\("lions", "tigers", "bears", "kittens"\);
-
-shuffle\($natural\_born\_killers\);
-```
-
-One major drawback to using shuffle\( \) is that it mangles your array keys. This is unavoidable, sadly.
-
-5.14.6. Multidimensional Arrays
+# Multidimensional Arrays
 
 Currently our arrays just hold standard, non-array variables, which makes them one-dimensional. In constrast, a two-dimensional array is where each element holds another array as its value, and each element in the child array holds a non-array variable. This allows us to store arrays within arrays \(and arrays within arrays within arrays, etc.\), and therefore lets us store much more information. Consider this script:
 
 ```
-$capitalcities\['England'\] = array\("Capital"=&gt;"London", "Population"=&gt;
+$capitalcities['England'] = array("Capital"=>"London", "Population"=>
 
-40000000, "NationalSport"=&gt;"Cricket"\);
+40000000, "NationalSport"=>"Cricket");
 
-$capitalcities\['Wales'\] = array\("Capital"=&gt;"Cardiff", "Population"=&gt;5000000,
+$capitalcities['Wales'] = array("Capital"=&gt;"Cardiff", "Population"=>5000000,
 
-"NationalSport"=&gt;"Rugby"\);
+"NationalSport"=>"Rugby");
 
-$capitalcities\['Scotland'\] = array\("Capital"=&gt;"Edinburgh", "Population"=&gt;
+$capitalcities['Scotland'] = array("Capital"=>"Edinburgh", "Population"=>
 
-8000000, "NationalSport"=&gt;"Football"\);
+8000000, "NationalSport"=>"Football");
 
-var\_dump\($capitalcities\);
+var_dump($capitalcities);
 ```
 
 That creates the $capitalcities array elements as before, but uses an array for each value. Each child array has three elements: Capital, Population, and NationalSport. At the end, there is a var\_dump\( \) call on the parent array, which gives this output:
 
 ```
-array\(3\) {
+array(3) {
 
-        \["England"\]=&gt;
+        ["England"]=>
 
-        array\(3\) {
+        array(3) {
 
-                \["Capital"\]=&gt;
+                ["Capital"] => string(6) "London"
 
-                string\(6\) "London"
+                ["Population"] => int(40000000)
 
-                \["Population"\]=&gt;
-
-                int\(40000000\)
-
-                \["NationalSport"\]=&gt;
-
-                string\(7\) "Cricket"
+                ["NationalSport"] => string(7) "Cricket"
 
         }
 
-        \["Wales"\]=&gt;
+        ["Wales"]=>
 
-        array\(3\) {
+        array(3) {
 
-                \["Capital"\]=&gt;
+                ["Capital"]=>
 
-                string\(7\) "Cardiff"
+                string(7) "Cardiff"
 
                 \["Population"\]=&gt;
 
