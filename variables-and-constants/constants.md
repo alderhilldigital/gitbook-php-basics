@@ -44,7 +44,7 @@ $somevar = "Secondsperday";
 print constant($somevar);
 ```
 
-Pre-set constants
+## Pre-set constants
 
 There are a number of constants automatically set by PHP in order to save you having to recalculate complicated values each time in your script, but PHP also provides other helpful information. For example, PHP always sets the \_ \_FILE\_ \_, \_ \_LINE\_ \_, \_ \_FUNCTION\_ \_, \_ \_CLASS\_ \_, and \_ \_METHOD\_ \_ constants for younote that there are double underscores on either side to make it unlikely you will use these names for your own constants.
 
@@ -90,7 +90,7 @@ $area = M_PI * ($radius * $radius);
 $area = M_PI * pow($radius, 2);
 ```
 
-Mathematical constants
+## Mathematical constants
 
 M\_PI
 
@@ -98,15 +98,11 @@ M\_PI
 
 pi
 
-
-
 M\_PI\_2
 
 1.57079632679489661923
 
 pi/2
-
-
 
 M\_PI\_4
 
@@ -114,15 +110,11 @@ M\_PI\_4
 
 pi/4
 
-
-
 M\_1\_PI
 
 0.31830988618379067154
 
 1/pi
-
-
 
 M\_2\_PI
 
@@ -130,15 +122,11 @@ M\_2\_PI
 
 2/pi
 
-
-
 M\_SQRTPI
 
 1.77245385090551602729
 
 sqrt\(M\_PI\)
-
-
 
 M\_2\_SQRTPI
 
@@ -146,23 +134,17 @@ M\_2\_SQRTPI
 
 2/sqrt\(M\_PI\)
 
-
-
 M\_SQRT2
 
 1.41421356237309504880
 
 sqrt\(2\)
 
-
-
 M\_SQRT3
 
 1.73205080756887729352
 
 sqrt\(3\)
-
-
 
 M\_SQRT1\_2
 
