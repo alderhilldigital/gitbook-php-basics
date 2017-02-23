@@ -23,7 +23,9 @@
   * [Conditional Statements](chapter1/if.md)
   * [Loops](chapter1/while.md)
   * [Case Switching](chapter1/switch.md)
-* Database
+* [Forms](forms.md)
+  * Did you post the form?
+* [Database](database.md)
   * Connection
   * Prepared Statements
   * Fetching Results
