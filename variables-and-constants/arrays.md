@@ -796,19 +796,11 @@ The krsort\( \) function takes an array as its only parameter, and reverse sorts
 
 $capitalcities\\['England'\\] = 'London';
 
-
-
 $capitalcities\\['Wales'\\] = 'Cardiff';
-
-
 
 $capitalcities\\['Scotland'\\] = 'Edinburgh';
 
-
-
 krsort\\($capitalcities\\);
-
-
 
 // reverse-sorted by key, so Wales, Scotland, then England
 
@@ -921,31 +913,31 @@ array(3) {
 
                 string(7) "Cardiff"
 
-                \["Population"\]=&gt;
+                ["Population"]=>
 
-                int\(5000000\)
+                int(5000000)
 
-                \["NationalSport"\]=&gt;
+                ["NationalSport"]=>
 
-                string\(5\) "Rugby"
+                string(5) "Rugby"
 
         }
 
-        \["Scotland"\]=&gt;
+        ["Scotland"]=>
 
-        array\(3\) {
+        array(3) {
 
-                \["Capital"\]=&gt;
+                ["Capital"]=>
 
-                string\(9\) "Edinburgh"
+                string(9) "Edinburgh"
 
-                \["Population"\]=&gt;
+                ["Population"]=>
 
-                int\(8000000\)
+                int(8000000)
 
-                \["NationalSport"\]=&gt;
+                ["NationalSport"]=>
 
-                string\(8\) "Football"
+                string(8) "Football"
 
         }
 
@@ -954,75 +946,7 @@ array(3) {
 
 Not only does var\_dump\( \) recurse into child arrays to output their contents too, but it indents all the output according to the array level.
 
-Section 5.14.  Arrays
-
-The count\( \) function has a helpful second parameter that, when set to 1, makes count\( \) perform a recursive count. The difference is that if you pass in a multidimensional array, count\( \) will count all the elements in the first array, then go into the first array element and count all the elements in there, and go into any elements in there, etc. For example, the $capitalcities array above has three elements; if you do not use the second parameter to count\( \), you will get 3 back. However, if you pass in 1 for the second parameter, you will get 12: three for the first-level elements \(England, Wales, Scotland\), and three each for the variables inside those elements \(Capital, Population, NationalSport\).
-
-5.14.7. The Array Cursor
-
-Each array has a "cursor," which you can think of as an arrow pointing to the next array element in line to be operated on. It is the array cursor that allows code like while \(list\($var, $val\) = each\($array\)\) to workeach\( \) moves forward the array cursor of its parameter each time it is called, until it eventually finds itself at the end of the array, and so returns false, ending the loop.
-
-The each\( \) function does not move the array cursor back to the first element when you first call it; it just picks up from where the cursor was. It is in situations like this where you need to set the position of the array cursor forcibly, and the functions reset\( \), end\( \), next\( \), and prev\( \) do just that. They all take just one parameterthe array to work withand return a value from that array.
-
-You use the reset\( \) function to rewind its parameter's cursor to the first element, then return the value of that element, whereas end\( \) will set the array cursor to the last element and return that value. The next\( \) and prev\( \) functions both move the cursor pointer forward or backward one element respectively, returning the value of the element now pointed to. If any of the four functions cannot return a value \(if there are no elements in the array, or if the array cursor has gone past the last element\), they will return false. As such, you can use them all in loops if you want.
-
-For example, this iterates over an array in reverse:
-
-```
-$array = array\("Foo", "Bar", "Baz", "Wom", "Bat"\);
-
-print end\($array\);
-
-
-
-while\($val = prev\($array\)\) {
-
-        print $val;
-
-}
-```
-
-Note that we print the output of end\( \), because it sets the array cursor to point at "Bat", and prev\( \) will shift the array cursor back one to "Wom", meaning that "Bat" would otherwise not be printed out.
-
-5.14.8. Holes in Arrays
-
-Using prev\( \) and next\( \) is more difficult when using arrays that have holes . For example:
-
-```
-$array\["a"\] = "Foo";
-
-$array\["b"\] = "";
-
-$array\["c"\] = "Baz";
-
-$array\["d"\] = "Wom";
-
-print end\($array\);
-
-
-
-while\($val = prev\($array\)\) {
-
-        print $val;
-
-}
-```
-
-You may think that will iterate over an array in reverse, printing out values as it goes; however, the value at key b is empty, which will cause both prev\( \) and next\( \) to think that the end of the array has been reached. So, when they hit b, they will return false, prematurely ending the while loop.
-
-In this situation, it would have been better to reverse the array, then use each\( \) to iterate over it. This will cope fine with empty variables and unknown keys.
-
-5.14.9. Using Arrays in Strings
-
-If you want to print array data inside a string, you need to use braces, { and }, around the variable to tell PHP that you are passing it an array to read from. This next code shows how:
-
-```
-$myarray\['foo'\] = "bar";
-
-print "This is from an array: {$myarray\['foo'\]}\n";
-```
-
-5.14.10. Saving Arrays
+**Saving Arrays**
 
 The serialize\( \) function converts an array, given as its only parameter, into a normal string that you can save in a file, a session, and so on. The opposite of serialize\( \) is unserialize\( \) , which takes a serialized string and converts it back to an array.
 
@@ -1033,17 +957,17 @@ Passing arrays across pages is best done using urlencode\( \) and urldecode\( \)
 Take a look at this next script:
 
 ```
-$array\["a"\] = "Foo";
+$array["a"] = "Foo";
 
-$array\["b"\] = "Bar";
+$array["b"] = "Bar";
 
-$array\["c"\] = "Baz";
+$array["c"] = "Baz";
 
 
 
-$str = serialize\($array\);
+$str = serialize($array);
 
-$strenc = urlencode\($str\);
+$strenc = urlencode($str);
 
 print $str . "\n";
 
@@ -1067,9 +991,9 @@ The first is the direct, serialized output of our array, and you can see how it 
 Once your array is in text form, you can do with it as you please. To return to the original array, it needs to be urldecode\( \)d, then unserialize\( \)d, like this:
 
 ```
-$arr = unserialize\(urldecode\($strenc\)\);
+$arr = unserialize(urldecode($strenc));
 
-var\_dump\($arr\);
+var_dump($arr);
 ```
 
 
