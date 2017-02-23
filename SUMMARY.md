@@ -12,6 +12,7 @@
   * [Basic Data Types](variables-and-constants/basic-data-types.md)
   * [Strings](variables-and-constants/strings.md)
   * [Integers](variables-and-constants/integers.md)
+  * [Floats](variables-and-constants/floats.md)
   * [True or False](variables-and-constants/true-or-false.md)
   * [Arrays](variables-and-constants/arrays.md)
   * [Constants](variables-and-constants/constants.md)
