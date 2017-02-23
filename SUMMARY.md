@@ -14,6 +14,7 @@
   * [Integers](variables-and-constants/integers.md)
   * [Floats](variables-and-constants/floats.md)
   * [Automatic Type Conversion](variables-and-constants/automatic-type-conversion.md)
+  * [Is Set?](variables-and-constants/is-set.md)
   * [True or False](variables-and-constants/true-or-false.md)
   * [Arrays](variables-and-constants/arrays.md)
   * [Constants](variables-and-constants/constants.md)
