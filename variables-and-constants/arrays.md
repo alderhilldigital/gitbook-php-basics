@@ -104,7 +104,7 @@ $foo = array(
 );
 ```
 
-5.14.2. Associative Arrays
+# Associative Arrays
 
 As well as choosing individual values, you can also choose your keys. In the fruits code above, we just specify values, and so we get an integer-indexed array; but we could have specified keys along with them, like this:
 
@@ -158,7 +158,7 @@ array(2) {
 
 This time the floating-point numbers have not been rounded down or converted at all, because PHP is using them as strings. The same solution applies to reading values out from an associative array with floating-point keysyou must always specify the key as a string.
 
-**The Array Operator**
+# The Array Operator
 
 You can also create and manage arrays using square brackets \[ \], which means "add to array" \(earning it the name "the array operator "\). Using this, you can both create arrays and add to the end of existing arrays, so this method is generally more popularyou will generally only find the array\( \) function being used when several values are being put inside the array, as it will fit on one line. Here are some examples of the array operator in action:
 
@@ -184,7 +184,7 @@ $array["c"] = "Baz";
 var_dump($array);
 ```
 
-**Returning Arrays from Functions**
+# Returning Arrays from Functions
 
 You can return one and only one value from your user functions, but you are able to make that single value an array, thereby allowing you to return many values as one:
 
@@ -246,172 +246,166 @@ if ($result) {
 
 One additional way to write the same thing is just to rely on the fact that an empty array, if typed as a boolean, is considered to be false, whereas an array with values is considered to be TRue. While that works, it is poor technique.
 
-**Array-Specific Functions**
+# Array-Specific Functions
 
 There are quite a few array functions, and you need not learn them allyour best bet is to give them all a try so that you at least know how they work. Then when you need them, you can look up their workings here or online.
 
-array\_diff\( \)
+**array\_diff\( \)**
 
 ```
-array array\_diff \( array arr1, array arr2 \[, array ...\] \)
+array_diff ( array arr1, array arr2 [, array ...] )
 ```
 
 The array\_diff\( \) function returns a new array containing all the values of array $arr1 that do not exist in array $arr2.
 
 ```
-$toppings1 = array\("Pepperoni", "Cheese", "Anchovies", "Tomatoes"\);
+$toppings1 = array("Pepperoni", "Cheese", "Anchovies", "Tomatoes");
 
-$toppings2 = array\("Ham", "Cheese", "Peppers"\);
+$toppings2 = array("Ham", "Cheese", "Peppers");
 
-$diff\_toppings = array\_diff\($toppings1, $toppings2\);
+$diff_toppings = array_diff($toppings1, $toppings2);
 
 
 
-var\_dump\($diff\_toppings\);
+var_dump($diff_toppings\);
 
-// prints: array\(3\) { \[0\]=&gt; string\(9\) "Pepperoni" \[2\]=&gt;
+// prints: array(3) { [0]=> string(9) "Pepperoni" [2]=>
 
-// string\(9\) "Anchovies" \[3\]=&gt; string\(8\) "Tomatoes" }
+// string(9) "Anchovies" [3]=> string(8) "Tomatoes" }
 ```
 
 You can diff several arrays simultaneously by providing more parameters to the function. In this situation, the function will return an array of values in the first array that do not appear in the second and subsequent arrays. For example:
 
 ```
-$arr1\_unique = array\_merge\($arr1, $arr2, $arr3, $arr4\);
+$arr1_unique = array_merge\($arr1, $arr2, $arr3, $arr4);
 ```
 
-array\_filter\( \)
+**array\_filter\( \)**
 
 ```
-array array\_filter \( array arr \[, function callback\] \)
+array_filter ( array arr [, function callback] )
 ```
 
 The array\_filter\( \) allows you to filter elements through a function you specify. If the function returns true, the item makes it into the array that is returned; otherwise, it does not. For example:
 
 ```
-function endswithy\($value\) {
+function endswithy($value) {
 
-        return \(substr\($value, -1\) =  = 'y'\);
+        return (substr($value, -1) =  = 'y');
 
 }
 
 
 
-$people = array\("Johnny", "Timmy", "Bobby", "Sam", "Tammy", "Joe"\);
+$people = array("Johnny", "Timmy", "Bobby", "Sam", "Tammy", "Joe");
 
-$withy = array\_filter\($people, "endswithy"\);
+$withy = array_filter($people, "endswithy");
 
-var\_dump\($withy\);
+var_dump($withy);
 
 // contains "Johnny", "Timmy", "Bobby", and "Tammy"
 ```
 
 In this script, we have an array of people, most of whom have a name ending with "y". However, several do not, and we want to have a list of people whose names ends in "y", so array\_filter\( \) is used. The function endswithy\( \) will return true if the last letter of each array value is a "y"; otherwise, it will return false. By passing that as the second parameter to array\_filter\( \), it will be called once for every array element, passing in the value of the element as the parameter to endswithy\( \), where it is checked for a "y" at the end.
 
-array\_flip\( \)
+**array\_flip\( \)**
 
 ```
-array array\_flip \( array arr \)
+array_flip ( array arr )
 ```
 
 The array\_flip\( \) function takes an array as its parameter, and exchanges all the keys in that array with their matching values, returning the new, flipped array. You can see how it works in this script:
 
 ```
-$capitalcities\['England'\] = 'London';
+$capitalcities['England'] = 'London';
 
-$capitalcities\['Scotland'\] = 'Edinburgh';
+$capitalcities['Scotland'] = 'Edinburgh';
 
-$capitalcities\['Wales'\] = 'Cardiff';
+$capitalcities['Wales'] = 'Cardiff';
 
-$flippedcities = array\_flip\($capitalcities\);
+$flippedcities = array_flip($capitalcities);
 
-var\_dump\($flippedcities\);
+var_dump($flippedcities\);
 ```
 
 The output is this:
 
 ```
-array\(3\) {
+array(3) {
 
-        \["London"\]=&gt;
+        ["London"] => string(7) "England"
 
-        string\(7\) "England"
+        ["Edinburgh"] => string(8) "Scotland"
 
-        \["Edinburgh"\]=&gt;
-
-        string\(8\) "Scotland"
-
-        \["Cardiff"\]=&gt;
-
-        string\(5\) "Wales"
+        ["Cardiff"] => string(5) "Wales"
 
 }
 ```
 
 As you can see, London, Edinburgh, and Cardiff are the keys in the array now, with England, Scotland, and Wales as the values.
 
-array\_intersect\( \)
+**array\_intersect\( \)**
 
 ```
-array array\_intersect \( array arr1, array arr2 \[, array ...\] \)
+array_intersect ( array arr1, array arr2 [, array ...] )
 ```
 
 The array\_intersect\( \) function returns a new array containing all the values of array $arr1 that exist in array $arr2.
 
 ```
-$toppings1 = array\("Pepperoni", "Cheese", "Anchovies", "Tomatoes"\);
+$toppings1 = array("Pepperoni", "Cheese", "Anchovies", "Tomatoes");
 
-$toppings2 = array\("Ham", "Cheese", "Peppers"\);
+$toppings2 = array("Ham", "Cheese", "Peppers");
 
-$int\_toppings = array\_intersect\($toppings1, $toppings2\);
+$int_toppings = array_intersect($toppings1, $toppings2);
 
 
 
-var\_dump\($int\_toppings\);
+var_dump($int_toppings);
 
-// prints: array\(1\) { \[1\]=&gt; string\(6\) "Cheese" }
+// prints: array(1) { [1]=> string(6) "Cheese" }
 ```
 
 The array\_intersect\( \) function will try to retain array keys when possible. For example, if you are intersecting two arrays that have no duplicate keys, all the keys will be retained. However, if there are key clashes, array\_intersect\( \) will use the first array to contain it. For example:
 
 ```
-$arr1 = array\("Paul"=&gt;25, "Ildiko"=&gt;38, "Nick"=&gt;27\);
+$arr1 = array("Paul"=>25, "Ildiko"=>38, "Nick"=>27);
 
-$arr2 = array\("Ildiko"=&gt;27, "Paul"=&gt;38\);
+$arr2 = array("Ildiko"=>27, "Paul"=>38);
 
 
 
 print "\nIntersect:\n";
 
-var\_dump\(array\_intersect\($arr1, $arr2\)\);
+var_dump(array_intersect($arr1, $arr2));
 
 // Values 27 and 38 clashes, so their keys from $arr1 are used.
 
-// So, output is Ildiko \(38\), and Nick \(27\)
+// So, output is Ildiko (38), and Nick (27)
 ```
 
 You can intersect several arrays simultaneously by providing more parameters to the function. For example:
 
 ```
-$arr1\_shared = array\_intersect\($arr1, $arr2, $arr3, $arr4\);
+$arr1_shared = array_intersect\($arr1, $arr2, $arr3, $arr4);
 ```
 
-array\_keys\( \)
+**array\_keys\( \)**
 
 ```
-array array\_keys \( array arr \[, mixed search \[, bool strict\]\] \)
+array_keys ( array arr [, mixed search [, bool strict]] )
 ```
 
 The array\_keys\( \) function takes an array as its only parameter, and returns an array of all the keys in that array. For example, if you have an array with user IDs as keys and usernames as values, you could use array\_keys\( \) to generate an array where the values were the user IDs. For example:
 
 ```
-$users\[923\] = 'TelRev';
+$users[923] = 'TelRev';
 
-$users\[100\] = 'Skellington';
+$users[100] = 'Skellington';
 
-$users\[1202\] = 'CapnBlack';
+$users[1202] = 'CapnBlack';
 
-$userids = array\_keys\($users\);
+$userids = array_keys($users);
 
 // $userids contains the values 923, 100, and 1202
 ```
@@ -419,39 +413,39 @@ $userids = array\_keys\($users\);
 There are two other parameters that can be passed to array\_keys\( \): the value to match and a flag indicating whether to perform strict matching. These two allow you to filter your array keysif you specify TelRev, then the only keys that array\_keys\( \) will return are the ones that have the value TelRev. By default, this is done by checking each key's value with the = = operator \(is equal to\); however, if you specify 1 as the third parameter, the check will be done with = = = \(is identical to\).
 
 ```
-$users\[923\] = 'TelRev';
+$users[923] = 'TelRev';
 
-$users\[100\] = 'Skellington';
+$users[100] = 'Skellington';
 
-$users\[1202\] = 'CapnBlack';
+$users[1202] = 'CapnBlack';
 
-$userids = array\_keys\($users, "TelRev"\);
+$userids = array_keys\($users, "TelRev");
 
 // userids contains only 923
 ```
 
-array\_merge\( \)
+**array\_merge\( \)**
 
 ```
-array array\_merge \( array arr1 \[, array arr2 \[, array ...\]\] \)
+array_merge ( array arr1 [, array arr2 [, array ...]] )
 ```
 
 The array\_merge\( \) function combines two or more arrays by renumbering numerical indexes and overwriting string indexes, if there is a clash.
 
 ```
-$toppings1 = array\("Pepperoni", "Cheese", "Anchovies", "Tomatoes"\);
+$toppings1 = array("Pepperoni", "Cheese", "Anchovies", "Tomatoes");
 
-$toppings2 = array\("Ham", "Cheese", "Peppers"\);
+$toppings2 = array("Ham", "Cheese", "Peppers");
 
-$both\_toppings = array\_merge\($toppings1, $toppings2\);
+$both_toppings = array_merge($toppings1, $toppings2);
 
 
 
-var\_dump\($both\_toppings\);
+var_dump($both_toppings);
 
-// prints: array\(7\) { \[0\]=&gt; string\(9\) "Pepperoni" \[1\]=&gt;
+// prints: array(7) { [0]=> string(9) "Pepperoni" [1]=>
 
-// string\(6\) "Cheese" \[2\]=&gt; string\(9\) "Anchovies" \[3\]=&gt;
+// string(6) "Cheese" \[2\]=&gt; string\(9\) "Anchovies" \[3\]=&gt;
 
 // string\(8\) "Tomatoes" \[4\]=&gt; string\(3\) "Ham" \[5\]=&gt;
 
